@@ -7,12 +7,12 @@ PackageLocale: en-US
 Publisher: TCDev
 PublisherUrl: https://github.com/TCDev10
 PublisherSupportUrl: https://github.com/TCDev10/MicaPDF/issues
-PrivacyUrl: https://github.com/TCDev10/MicaPDF/blob/main/PRIVACY.md
+PrivacyUrl: https://raw.githubusercontent.com/TCDev10/MicaPDF/main/PRIVACY.md
 Author: TCDev
 PackageName: MicaPDF
 PackageUrl: https://github.com/TCDev10/MicaPDF
 License: GPL-3.0
-LicenseUrl: https://github.com/TCDev10/MicaPDF/blob/main/LICENSE
+LicenseUrl: https://raw.githubusercontent.com/TCDev10/MicaPDF/main/LICENSE
 Copyright: Copyright (c) TCDev
 ShortDescription: PDF viewer for Windows with Mica backdrop, annotations, and export
 Description: |-

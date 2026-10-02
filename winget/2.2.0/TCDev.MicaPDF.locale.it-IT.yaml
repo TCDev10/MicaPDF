@@ -11,7 +11,7 @@ Author: TCDev
 PackageName: MicaPDF
 PackageUrl: https://github.com/TCDev10/MicaPDF
 License: GPL-3.0
-LicenseUrl: https://github.com/TCDev10/MicaPDF/blob/main/LICENSE
+LicenseUrl: https://raw.githubusercontent.com/TCDev10/MicaPDF/main/LICENSE
 Copyright: Copyright (c) TCDev
 ShortDescription: Visualizzatore PDF per Windows con sfondo Mica, annotazioni ed esportazione
 Description: |-
