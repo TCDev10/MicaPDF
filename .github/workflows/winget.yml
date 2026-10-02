@@ -6,7 +6,7 @@ name: Publish to WinGet
 # GitHub Release opens an update PR via Komac.
 #
 # Setup:
-# 1. Fork microsoft/winget-pkgs under TCDev69 (or set fork-user).
+# 1. Fork microsoft/winget-pkgs under TCDev10 (or set fork-user).
 # 2. Create a classic PAT with public_repo scope → repo secret WINGET_TOKEN.
 
 on:
