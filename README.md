@@ -72,3 +72,7 @@ See [CHANGELOG.md](CHANGELOG.md).
 ## License
 
 GNU General Public License v3.0 (GPLv3). See [LICENSE](LICENSE).
+
+## Privacy
+
+See [PRIVACY.md](PRIVACY.md) for how MicaPDF handles documents, passwords, local data, and update checks.
