@@ -137,7 +137,7 @@ jobs:
 
         ## Download
 
-        See the [Releases](https://github.com/TCDev69/MicaPDF/releases) page.
+        See the [Releases](https://github.com/TCDev10/MicaPDF/releases) page.
 
         ## Changelog
 
@@ -162,7 +162,7 @@ jobs:
         #define MyAppName "MicaPDF"
         #define MyAppVersion "$ver"
         #define MyAppPublisher "TCDev"
-        #define MyAppURL "https://github.com/TCDev69/MicaPDF"
+        #define MyAppURL "https://github.com/TCDev10/MicaPDF"
         #define MyAppExeName "MicaPDF.exe"
 
         [Setup]
@@ -217,7 +217,7 @@ jobs:
         #define MyAppName "MicaPDF"
         #define MyAppVersion "$ver"
         #define MyAppPublisher "TCDev"
-        #define MyAppURL "https://github.com/TCDev69/MicaPDF"
+        #define MyAppURL "https://github.com/TCDev10/MicaPDF"
         #define MyAppExeName "MicaPDF.exe"
 
         [Setup]
