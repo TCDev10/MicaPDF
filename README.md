@@ -26,7 +26,7 @@ PDF viewer for Windows with Mica backdrop, zoom/navigation, ink and text annotat
 
 Pre-built releases (self-contained, no .NET install required):
 
-- [Releases](https://github.com/TCDev69/MicaPDF/releases)
+- [Releases](https://github.com/TCDev10/MicaPDF/releases)
 - `MicaPDF-Setup-x64.exe` / `MicaPDF-Setup-ARM64.exe` — installer
 - `MicaPDF-Portable-x64.zip` / `MicaPDF-Portable-ARM64.zip` — portable build
 

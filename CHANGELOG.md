@@ -89,4 +89,4 @@ Major update. UI, annotations, and settings were largely rewritten since 1.3.0.
 - Navigation controls improvements
 - Bumped to .NET 10
 
-See [v1.3.0](https://github.com/TCDev69/MicaPDF/releases/tag/v1.3.0) for earlier releases.
+See [v1.3.0](https://github.com/TCDev10/MicaPDF/releases/tag/v1.3.0) for earlier releases.

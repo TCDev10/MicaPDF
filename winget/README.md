@@ -5,7 +5,7 @@ Automation uses **[WinGet Releaser](https://github.com/marketplace/actions/winge
 ## One-time setup
 
 1. Merge the **first** package into [microsoft/winget-pkgs](https://github.com/microsoft/winget-pkgs) using [`2.2.0/`](2.2.0/) (or `komac new … --submit` with Scope `user` and versioned URLs).
-2. Fork `microsoft/winget-pkgs` under **TCDev69** (same account as this repo).
+2. Fork `microsoft/winget-pkgs` under **TCDev10** (same account as this repo).
 3. Create a **classic** PAT with `public_repo` scope → repository secret **`WINGET_TOKEN`**.
 
 After that, tagging `v*` and publishing the release (via `build-release.yml`) triggers Komac to open the winget update PR. Manual re-run: Actions → Publish to WinGet → enter tag (e.g. `v2.3.0`).
@@ -30,8 +30,8 @@ komac analyze --hash .\MicaPDF-Setup-x64.exe
 komac update TCDev.MicaPDF `
   --version 2.3.0 `
   --urls `
-    https://github.com/TCDev69/MicaPDF/releases/download/v2.3.0/MicaPDF-Setup-x64.exe `
-    https://github.com/TCDev69/MicaPDF/releases/download/v2.3.0/MicaPDF-Setup-ARM64.exe `
+    https://github.com/TCDev10/MicaPDF/releases/download/v2.3.0/MicaPDF-Setup-x64.exe `
+    https://github.com/TCDev10/MicaPDF/releases/download/v2.3.0/MicaPDF-Setup-ARM64.exe `
   --submit
 
 winget validate --manifest .\winget\2.2.0

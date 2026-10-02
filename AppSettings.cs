@@ -37,7 +37,7 @@ namespace MicaPDF
 
     public sealed class AppSettings
     {
-        public const string DefaultGitHubRepository = "TCDev69/MicaPDF";
+        public const string DefaultGitHubRepository = "TCDev10/MicaPDF";
 
         public static readonly string[] DefaultMenuOrder =
         {
