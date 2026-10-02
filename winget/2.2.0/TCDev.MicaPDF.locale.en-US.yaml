@@ -5,14 +5,14 @@ PackageIdentifier: TCDev.MicaPDF
 PackageVersion: 2.2.0
 PackageLocale: en-US
 Publisher: TCDev
-PublisherUrl: https://github.com/TCDev69
-PublisherSupportUrl: https://github.com/TCDev69/MicaPDF/issues
+PublisherUrl: https://github.com/TCDev10
+PublisherSupportUrl: https://github.com/TCDev10/MicaPDF/issues
 PrivacyUrl: https://github.com/TCDev10/MicaPDF/blob/main/PRIVACY.md
 Author: TCDev
 PackageName: MicaPDF
-PackageUrl: https://github.com/TCDev69/MicaPDF
+PackageUrl: https://github.com/TCDev10/MicaPDF
 License: GPL-3.0
-LicenseUrl: https://github.com/TCDev69/MicaPDF/blob/main/LICENSE
+LicenseUrl: https://github.com/TCDev10/MicaPDF/blob/main/LICENSE
 Copyright: Copyright (c) TCDev
 ShortDescription: PDF viewer for Windows with Mica backdrop, annotations, and export
 Description: |-
@@ -32,6 +32,6 @@ ReleaseNotes: |-
   - Settings panel redesigned with SettingsExpander/SettingsCard
   - Export and import settings as JSON
   - PDF rendering and page cache tuned for lower memory use
-ReleaseNotesUrl: https://github.com/TCDev69/MicaPDF/releases/tag/v2.2.0
+ReleaseNotesUrl: https://github.com/TCDev10/MicaPDF/releases/tag/v2.2.0
 ManifestType: defaultLocale
 ManifestVersion: 1.12.0
