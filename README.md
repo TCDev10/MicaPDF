@@ -34,7 +34,7 @@ Pre-built releases (self-contained, no .NET install required):
 winget install --id TCDev.MicaPDF -e
 ```
 
-Available after the package is merged into the [winget community repository](https://github.com/microsoft/winget-pkgs). Initial manifests: [`winget/2.2.0`](winget/2.2.0). Later versions are published automatically with [WinGet Releaser](https://github.com/marketplace/actions/winget-releaser) (Komac) on each GitHub Release.
+Available after the package is merged into the [winget community repository](https://github.com/microsoft/winget-pkgs). Initial manifests: [`winget/2.2.1`](winget/2.2.1). Later versions are published automatically with [WinGet Releaser](https://github.com/marketplace/actions/winget-releaser) (Komac) on each GitHub Release.
 
 Each zip includes `INSTALL.txt`, `README.md`, and `CHANGELOG.md`.
 
