@@ -2,6 +2,12 @@
 
 All notable changes to MicaPDF are listed here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [2.2.1] - 2026-10-17
+
+### Fixed
+
+- Startup crash (0xC000027B) of the installed build on clean Windows: release builds are now published as a standard multi-file self-contained app (.NET runtime and Windows App SDK shipped next to MicaPDF.exe) instead of a single-file EXE
+
 ## [2.2.0] - 2026-09-03
 
 ### Added

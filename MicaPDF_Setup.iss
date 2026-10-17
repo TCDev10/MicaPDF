@@ -1,5 +1,5 @@
 #define MyAppName "MicaPDF"
-#define MyAppVersion "2.2.0"
+#define MyAppVersion "2.2.1"
 #define MyAppPublisher "TCDev"
 #define MyAppExeName "MicaPDF.exe"
 
@@ -28,8 +28,9 @@ Name: "italian"; MessagesFile: "compiler:Languages\Italian.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-; IMPORTANT: Update the source path to match your publish output directory
-Source: "bin\x64\Release\net10.0-windows10.0.22621.0\win-x64\publish\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
+; Local/manual installer. Publish first (multi-file, self-contained; .NET and Windows App SDK are bundled):
+;   dotnet publish MicaPDF.csproj -c Release -r win-x64 -p:Platform=x64 --self-contained true -p:WindowsAppSDKSelfContained=true -p:PublishSingleFile=false -p:PublishReadyToRun=false
+; The whole publish folder must be shipped (DLLs, .pri, Assets), not just MicaPDF.exe.
 Source: "bin\x64\Release\net10.0-windows10.0.22621.0\win-x64\publish\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
@@ -39,35 +40,3 @@ Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: de
 
 [Run]
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
-
-[Code]
-function InitializeSetup: Boolean;
-var
-  ErrorCode: Integer;
-  NetRuntimeInstalled: Boolean;
-  Result1: Boolean;
-begin
-  // Check for .NET 10 Desktop Runtime (x64)
-  // Registry key for .NET 10
-  NetRuntimeInstalled := RegKeyExists(HKLM, 'SOFTWARE\WOW6432Node\dotnet\Setup\InstalledVersions\x64\sharedhost\Microsoft.NETCore.App\10.0.0') or 
-                         RegKeyExists(HKLM, 'SOFTWARE\dotnet\Setup\InstalledVersions\x64\sharedhost\Microsoft.NETCore.App\10.0.0');
-
-  if not NetRuntimeInstalled then
-  begin
-    if MsgBox('This application requires .NET Desktop Runtime 10.0. Would you like to download it now?', mbConfirmation, MB_YESNO) = IDYES then
-    begin
-      ShellExec('open', 'https://dotnet.microsoft.com/download/dotnet/10.0', '', '', SW_SHOWNORMAL, mbConfirmation, ErrorCode);
-      MsgBox('Please install the .NET Desktop Runtime and then run this setup again.', mbInformation, MB_OK);
-      Result := False;
-    end
-    else
-    begin
-      MsgBox('.NET Runtime 10.0 is required. Setup cannot continue.', mbCriticalError, MB_OK);
-      Result := False;
-    end;
-  end
-  else
-  begin
-    Result := True;
-  end;
-end;

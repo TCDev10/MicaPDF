@@ -7,18 +7,19 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <Platforms>x64;ARM64</Platforms>
     <RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
-    <PublishProfile>win-$(Platform).pubxml</PublishProfile>
     <UseWinUI>true</UseWinUI>
     <EnableMsixTooling>true</EnableMsixTooling>
     <Nullable>enable</Nullable>
     <WindowsPackageType>None</WindowsPackageType>
     <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
+    <!-- Ensure MicaPDF.pri is generated and copied to the multi-file publish output -->
+    <AppxGenerateProjectPriFile>true</AppxGenerateProjectPriFile>
     <SelfContained>false</SelfContained>
     <PublishReadyToRun Condition="'$(PublishReadyToRun)' == ''">false</PublishReadyToRun>
     <TieredCompilation>true</TieredCompilation>
     <AssemblyName>MicaPDF</AssemblyName>
     <ApplicationIcon>MicaPDF.ico</ApplicationIcon>
-    <Version>2.2.0</Version>
+    <Version>2.2.1</Version>
   </PropertyGroup>
 
   <!-- dotnet run without -p:Platform builds AnyCPU; Win2D/WinUI require a concrete platform -->
