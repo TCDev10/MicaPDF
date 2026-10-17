@@ -20,7 +20,7 @@ jobs:
     - name: Resolve version
       run: |
         $ver = $env:GITHUB_REF -replace '^refs/tags/v',''
-        if (-not $ver -or $ver -eq $env:GITHUB_REF) { $ver = '2.2.0' }
+        if (-not $ver -or $ver -eq $env:GITHUB_REF) { $ver = '2.2.1' }
         "APP_VERSION=$ver" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
         Write-Host "Building version $ver"
       shell: pwsh
@@ -40,10 +40,10 @@ jobs:
       run: dotnet test MicaPDF.Tests/MicaPDF.Tests.csproj -c Release --verbosity normal
       
     - name: Build x64 Release
-      run: dotnet publish MicaPDF.csproj -c Release -r win-x64 -p:Platform=x64 --self-contained true -p:PublishSingleFile=true -p:PublishReadyToRun=true
+      run: dotnet publish MicaPDF.csproj -c Release -r win-x64 -p:Platform=x64 --self-contained true -p:WindowsAppSDKSelfContained=true -p:PublishSingleFile=false -p:PublishReadyToRun=false
       
     - name: Build ARM64 Release
-      run: dotnet publish MicaPDF.csproj -c Release -r win-arm64 -p:Platform=ARM64 --self-contained true -p:PublishSingleFile=true -p:PublishReadyToRun=true
+      run: dotnet publish MicaPDF.csproj -c Release -r win-arm64 -p:Platform=ARM64 --self-contained true -p:WindowsAppSDKSelfContained=true -p:PublishSingleFile=false -p:PublishReadyToRun=false
       
     - name: Create Release Folder
       run: |
@@ -192,7 +192,7 @@ jobs:
         Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
         [Files]
-        Source: "bin\x64\Release\net10.0-windows10.0.22621.0\win-x64\publish\MicaPDF.exe"; DestDir: "{app}"; Flags: ignoreversion
+        Source: "bin\x64\Release\net10.0-windows10.0.22621.0\win-x64\publish\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 
         [Icons]
         Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
@@ -247,7 +247,7 @@ jobs:
         Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
         [Files]
-        Source: "bin\ARM64\Release\net10.0-windows10.0.22621.0\win-arm64\publish\MicaPDF.exe"; DestDir: "{app}"; Flags: ignoreversion
+        Source: "bin\ARM64\Release\net10.0-windows10.0.22621.0\win-arm64\publish\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 
         [Icons]
         Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
@@ -273,22 +273,20 @@ jobs:
       
     - name: Create Portable ZIP
       run: |
-        $x64 = @(
-          "bin\x64\Release\net10.0-windows10.0.22621.0\win-x64\publish\MicaPDF.exe",
-          "Release\INSTALL.txt",
-          "Release\README.md",
-          "Release\CHANGELOG.md"
+        $targets = @(
+          @{ Publish = "bin\x64\Release\net10.0-windows10.0.22621.0\win-x64\publish"; Zip = "Release\MicaPDF-Portable-x64.zip"; Stage = "portable-x64" },
+          @{ Publish = "bin\ARM64\Release\net10.0-windows10.0.22621.0\win-arm64\publish"; Zip = "Release\MicaPDF-Portable-ARM64.zip"; Stage = "portable-arm64" }
         )
-        $arm64 = @(
-          "bin\ARM64\Release\net10.0-windows10.0.22621.0\win-arm64\publish\MicaPDF.exe",
-          "Release\INSTALL.txt",
-          "Release\README.md",
-          "Release\CHANGELOG.md"
-        )
-        Compress-Archive -Path $x64 -DestinationPath "Release\MicaPDF-Portable-x64.zip" -Force
-        Compress-Archive -Path $arm64 -DestinationPath "Release\MicaPDF-Portable-ARM64.zip" -Force
+        foreach ($t in $targets) {
+          if (-not (Test-Path "$($t.Publish)\MicaPDF.exe")) { throw "Missing $($t.Publish)\MicaPDF.exe" }
+          if (Test-Path $t.Stage) { Remove-Item $t.Stage -Recurse -Force }
+          New-Item -ItemType Directory -Force -Path $t.Stage | Out-Null
+          Copy-Item -Path "$($t.Publish)\*" -Destination $t.Stage -Recurse -Force
+          Copy-Item -Path "Release\INSTALL.txt","Release\README.md","Release\CHANGELOG.md" -Destination $t.Stage -Force
+          Compress-Archive -Path "$($t.Stage)\*" -DestinationPath $t.Zip -Force
+        }
       shell: pwsh
-      
+
     - name: Upload Release Assets
       uses: actions/upload-artifact@v4
       with:
