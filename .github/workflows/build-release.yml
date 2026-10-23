@@ -288,7 +288,7 @@ jobs:
       shell: pwsh
 
     - name: Upload Release Assets
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: MicaPDF-Release
         path: |
